@@ -38,7 +38,17 @@ namespace Calculator
 		// Stores state
 		public Calculator()
 		{
+			
 		}
-	}
+
+        public int Add(int x, int y) => x + y;
+        public int Sub(int x, int y) => x - y;
+        public int Multiply(int x, int y) => x * y;
+        public int Divide(int x, int y) => x / y;
+        public int Mod(int x, int y) => x % y;
+        public int Expontentiate(int x, int y) => x ^ y;
+        //public int Root(int x, int y) => Expontentiate(x, 1 / y);
+        //public int Factorial(int x) => x!;
+    }
 }
 
