@@ -10,14 +10,14 @@ class Program
         Menu.dispatchTable["/"] = calc.Divide;
         Menu.dispatchTable["%"] = calc.Mod;
         Menu.dispatchTable["^"] = calc.Expontentiate;
-
+        Menu.displayStart();
         while (true)
         { 
             string input = Console.ReadLine();
-
+            
             if (input.ToLower().Equals("exit"))
                 break;
-
+            ;
             string[] inputs = input.Split(" ");
 
             var userFunc = Menu.dispatchTable[inputs[1]];
