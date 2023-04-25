@@ -18,11 +18,14 @@ class Program
         Menu.numberFunctionTable["%"] = calc.Mod;
         Menu.numberFunctionTable["^"] = calc.Expontentiate;
 
+        // Dispatch table with string comparisons
+        Menu.singleReturnsTable["="] = calc.StoreVar;
+
         // Dispatch table for no-param operations
         Menu.noReturnFunctionTable["clear"] = calc.Clear;
         Menu.noReturnFunctionTable["start"] = Menu.displayStart;
         Menu.noReturnFunctionTable["exit"] = (() => { Menu.displayEnd(); active = false; });
-
+        Menu.noReturnFunctionTable["vars"] = calc.DisplayVars;
         // displays the start text
         Menu.displayStart();
 
@@ -40,40 +43,35 @@ class Program
 
             string[] inputs = input.Split(" ");
             int inputCount = inputs.Length;
-        }
-            
 
-        /* 
+            // Commands
             if (inputCount == 1)
             {
-                try
-                {
-                    Menu.noReturnFunctionTable[inputs[0]]();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Not a command.");
-                }
+               var userFunc = Menu.noReturnFunctionTable[inputs[0]];
             }
-            else if (inputCount == 3) {
-                try
-                {
-                    var userFunc = Menu.numberFunctionTable[inputs[1]];
-                    int firstNum = int.Parse(inputs[0]);
-                    int secondNum = int.Parse(inputs[2]);
-                    Console.WriteLine(userFunc(firstNum, secondNum));
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Invalid Input, try again");
-                    continue;
-                }
-            }
-            else
+
+            // Reg. Notation
+            // 1 + 1 + 1 => 3
+            // input[0] input[1] input[2] input[3] input[4]
+            // num operator num  // pattern
+
+            if (inputCount >= 3)
             {
-                Console.WriteLine("Invalid Input, try again");
+                if (Menu.singleReturnsTable.ContainsKey(inputs[1]))
+                {
+                    var userFunc = Menu.singleReturnsTable[inputs[1]];
+                    calc.StoreVar(inputs[0], int.Parse(inputs[2]));
+                }
+
+                
             }
-        */
+
+            // Polish Notation
+            // 1 1 + 1 +
+            // input[0] input[1] input[2] input[3] input[4]
+            // num num operator // pattern
+        }
+            
 
         // conclusion
         Console.WriteLine("Bye!");

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text.RegularExpressions;
+
 namespace Calculator
 {
 	public class Calculator
@@ -35,11 +37,9 @@ namespace Calculator
 		// nth Fib number where n is the value in calculator's current state
 
 
-		// Stores state
-		public Calculator()
-		{
-			
-		}
+		public int answer { get; set; }
+
+		public Dictionary<string, int> StoredVars = new();
 
         public int Add(int x, int y) => x + y;
         public int Sub(int x, int y) => x - y;
@@ -47,17 +47,49 @@ namespace Calculator
         public int Divide(int x, int y) => x / y;
         public int Mod(int x, int y) => x % y;
         public int Expontentiate(int x, int y) => x ^ y;
-		//public int Root(int x, int y) => Expontentiate(x, 1 / y);
+		public int SquareRoot(int x) => Expontentiate(x, 1 / 2);
 		//public int Factorial(int x) => x!;
 
+
+		/// <summary>
+		/// Clears the calculator's state
+		/// </summary>
 		public void Clear()
 		{
-			Console.WriteLine("Cleared all variables");
+			Console.WriteLine("State set to 0");
+			answer = 0;
 		}
 
-		public void LoadFile(string filePath)
+		/// <summary>
+		/// Displays the answer stored in the state
+		/// </summary>
+		public void WriteAnswer()
 		{
-			Console.WriteLine("Loading File...");
+			Console.WriteLine(answer);
+		}
+
+		/// <summary>
+		/// Stores a variable in the array
+		/// </summary>
+		/// <param name="name">Name of the variable</param>
+		/// <param name="val">Value of the variable</param>
+		public void StoreVar(string name, int val)
+		{
+            // Regex from https://www.techiedelight.com/check-string-consists-alphanumeric-characters-csharp/
+
+			if (name == name.ToLower() && Regex.IsMatch(name, "^[a-zA-Z0-9]*$"))
+                StoredVars[name] = val;
+			else
+				Console.WriteLine("Invalid Variable Name");
+        }
+
+
+		public void DisplayVars()
+		{
+			foreach (string key in StoredVars.Keys)
+			{
+				Console.WriteLine($"{key} = {StoredVars[key]}");
+			}
 		}
     }
 }

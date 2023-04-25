@@ -3,11 +3,12 @@ namespace Calculator
 {
 	public class Menu
 	{
-		// establishes dispatch table for menu.
-		public static Dictionary<string, Func<int, int, int>> numberFunctionTable = new();
+        // establishes dispatch table for menu.
+        public static Dictionary<string, Func<int, int, int>> numberFunctionTable = new();
         public static Dictionary<string, Action> noReturnFunctionTable = new();
-		// Handles hci's
-		public Menu()
+        public static Dictionary<string, Action<string, int>> singleReturnsTable = new();
+        // Handles hci's
+        public Menu()
 		{
 
 		}
@@ -25,14 +26,6 @@ namespace Calculator
         }
 
         public static void displayEnd() => Console.WriteLine("Bye");
-        //int Add(int x, int y) => x + y;
-        //int Sub(int x, int y) => x - y;
-        //int Multiply(int x, int y) => x * y;
-        //int Divide(int x, int y) => x / y;
-        //int Mod(int x, int y) => x % y;
-        //int Expontentiate(int x, int y) => x ^ y;
-        //int Root(int x, int y) => Expontentiate(x, 1 / y);
-        //int Factorial(int x) => x!;
     }
 }
 
