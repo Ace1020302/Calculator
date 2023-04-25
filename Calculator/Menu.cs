@@ -3,11 +3,11 @@ namespace Calculator
 {
 	public class Menu
 	{
-        // establishes dispatch table for menu.
-        public static Dictionary<string, Func<int, int, int>> numberFunctionTable = new();
-        public static Dictionary<string, Action> noReturnFunctionTable = new();
-        public static Dictionary<string, Action<string, int>> singleReturnsTable = new();
-        // Handles hci's
+        // Establishes dispatch table for menu
+        public static Dictionary<string, dynamic> numberFunctionTable = new();
+        public static Dictionary<string, dynamic> noReturnFunctionTable = new();
+
+        // Handles HCI's
         public Menu()
 		{
 
@@ -20,12 +20,20 @@ namespace Calculator
             Console.WriteLine();
             Console.WriteLine("Please remember to space out input!");
             Console.WriteLine("Examples: 1 + 3, 4 - 3, 10 % 3");
-            Console.WriteLine("To Exit, type 'exit'");
+            Console.WriteLine("For other commands, type 'help'");
+            Console.WriteLine("To see this again, type 'start'");
+            Console.WriteLine("To exit, type 'exit'");
             Console.WriteLine("===================================");
             
         }
 
         public static void displayEnd() => Console.WriteLine("Bye");
+
+        public static void displayCommands()
+        {
+            //foreach(string key in noReturnFunctionTable.Keys)
+                //Console.WriteLine($"{}: {}");
+        }
     }
 }
 
