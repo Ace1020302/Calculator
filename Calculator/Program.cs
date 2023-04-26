@@ -24,14 +24,11 @@ class Program
         Menu.numberFunctionTable["undo"] = new Action(() => calc.Undo());
         Menu.numberFunctionTable["clear"] = new Action(() => calc.Clear());
         Menu.numberFunctionTable["start"] = new Action(() => Menu.displayStart());
-        Menu.numberFunctionTable["exit"] = new Action(() => { Menu.displayEnd(); active = false; });
+        Menu.numberFunctionTable["exit"] = new Action(() => { active = false; });
         Menu.numberFunctionTable["vars"] = new Action(() => calc.DisplayVars());
+        Menu.numberFunctionTable["save"] = new Action(() => FileManager.saveCalcState(calc));
+        Menu.numberFunctionTable["load"] = new Action(() => FileManager.loadCalcState(calc));
 
-        // Dispatch table for no-param operations
-        //Menu.noReturnFunctionTable["clear"] = calc.Clear;
-        //Menu.noReturnFunctionTable["start"] = Menu.displayStart;
-        //Menu.noReturnFunctionTable["exit"] = ( () => { Menu.displayEnd(); active = false; });
-        //Menu.noReturnFunctionTable["vars"] = calc.DisplayVars;
         // displays the start text
         Menu.displayStart();
 
@@ -56,13 +53,17 @@ class Program
                 if (Menu.numberFunctionTable.ContainsKey(inputs[0]))
                 {
                     Menu.numberFunctionTable[inputs[0]]();
-                    if (inputs[0].Contains("exit"))
-                        continue;
                 }
                 else
                 {
                     Console.WriteLine("Not a recognized command");
                 }
+            }
+
+            if (inputCount == 2)
+            {
+                string stateNum = calc.answer.ToString();
+                Menu.numberFunctionTable[inputs[0]](stateNum, inputs[1]);
             }
 
             /* Reg. Notation
@@ -72,12 +73,9 @@ class Program
 
             if (inputCount >= 3)
             {
-                if (!inputs[1].Contains("="))
-                    Menu.numberFunctionTable[inputs[1]](inputs[0], inputs[2]);
-                else
-                    Menu.numberFunctionTable[inputs[1]](inputs[0], inputs[2]);
+                Menu.numberFunctionTable[inputs[1]](inputs[0], inputs[2]);
             }
-
+            
             Console.WriteLine(calc.answer);
 
             // Polish Notation

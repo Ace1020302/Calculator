@@ -27,8 +27,6 @@ namespace Calculator
             
         }
 
-        public static void displayEnd() => Console.WriteLine("Bye");
-
         public static void displayCommands()
         {
             //foreach(string key in noReturnFunctionTable.Keys)

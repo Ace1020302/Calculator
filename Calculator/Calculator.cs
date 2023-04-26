@@ -41,7 +41,7 @@ namespace Calculator
 
 		public double answer { get => answers.Count() == 0 ? 0 : answers.Peek(); set { answers.Push(value); } }
 
-		public Dictionary<string, int> StoredVars = new();
+		public Dictionary<string, double> StoredVars = new();
 
 		public void Add(string x, string y)
 		{
@@ -139,7 +139,7 @@ namespace Calculator
 		{
             // Regex from https://www.techiedelight.com/check-string-consists-alphanumeric-characters-csharp/
 
-			if (name == name.ToLower() && Regex.IsMatch(name, "^[a-zA-Z0-9]*$"))
+			if (name == name.ToLower() && Regex.IsMatch(name, "^[a-zA-Z]*$"))
                 StoredVars[name] = int.Parse(val);
 			else
 				Console.WriteLine("Invalid Variable Name");
