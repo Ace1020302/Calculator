@@ -14,13 +14,9 @@ namespace Calculator
 			var serializer = new SerializerBuilder().Build();
 			var yaml = serializer.Serialize(calc.answer);
             yaml += serializer.Serialize(calc.StoredVars);
-			//Console.WriteLine(yaml);
 
-            
-
-			//File.Create(filePath);
 			File.WriteAllText(filePath, yaml);
-			
+			Console.WriteLine("State Saved!");
 		}
 
 		public static void loadCalcState(Calculator calc)
@@ -36,6 +32,7 @@ namespace Calculator
 			}
 
 			calc.StoredVars = dictonaryToLoad;
+			Console.WriteLine("State Loaded!");
 		}
 	}
 }

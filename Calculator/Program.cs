@@ -32,6 +32,14 @@ class Program
         // displays the start text
         Menu.displayStart();
 
+        // Ask if they want to load last state
+        Console.Write("> Load Previous File? ");
+        string ans = Console.ReadLine();
+        if (ans.ToLower().Equals("yes"))
+            FileManager.loadCalcState(calc);
+        else
+            Console.WriteLine("If you change your mind, type 'load'");
+        
         // output for current loop
         string output = "";
 
@@ -47,7 +55,7 @@ class Program
             string[] inputs = input.Split(" ");
             int inputCount = inputs.Length;
 
-
+            Console.WriteLine("-----------------------------------");
             if (inputCount == 1)
             {
                 if (Menu.numberFunctionTable.ContainsKey(inputs[0]))
@@ -73,15 +81,13 @@ class Program
 
             if (inputCount >= 3)
             {
+
                 Menu.numberFunctionTable[inputs[1]](inputs[0], inputs[2]);
             }
-            
-            Console.WriteLine(calc.answer);
 
-            // Polish Notation
-            // 1 1 + 1 +
-            // input[0] input[1] input[2] input[3] input[4]
-            // num num operator // pattern
+            Console.WriteLine("-----------------------------------");
+            Console.WriteLine(calc.answer);
+            Console.WriteLine("-----------------------------------");
         }
             
 

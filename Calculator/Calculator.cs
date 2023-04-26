@@ -150,7 +150,7 @@ namespace Calculator
 
 			if (StoredVars.ContainsKey(input))
 				return StoredVars[input];
-			return int.Parse(input);
+			return double.Parse(input);
 		}
 
 
