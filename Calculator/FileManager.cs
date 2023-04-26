@@ -8,6 +8,10 @@ namespace Calculator
         static string fileName = "LastCalculatorState.yaml";
         static string filePath = $"../../{fileName}";
 
+		/// <summary>
+		/// Saves the current calculator state (only the most recent answer is saved)
+		/// </summary>
+		/// <param name="calc"> Calculator object to save the state of </param>
         public static void saveCalcState(Calculator calc)
 		{
 			
@@ -19,6 +23,10 @@ namespace Calculator
 			Console.WriteLine("State Saved!");
 		}
 
+		/// <summary>
+		/// Loads the calculator's state into the calculator object
+		/// </summary>
+		/// <param name="calc"> Calculator object to load the state into </param>
 		public static void loadCalcState(Calculator calc)
 		{
 			string[] lines = File.ReadAllText(filePath).Split("\n");

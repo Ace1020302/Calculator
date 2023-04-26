@@ -43,6 +43,11 @@ namespace Calculator
 
 		public Dictionary<string, double> StoredVars = new();
 
+		/// <summary>
+		/// Adds two numbers together
+		/// </summary>
+		/// <param name="x"> first number </param>
+		/// <param name="y"> second number </param>
 		public void Add(string x, string y)
 		{
 			double intOne = Parse(x);
@@ -51,11 +56,20 @@ namespace Calculator
 			answer = intOne + intTwo;
 		}
 
+		/// <summary>
+		/// Undoes the last calculation
+		/// </summary>
 		public void Undo()
 		{
 			double x;
 			answers.TryPop(out x);
 		}
+
+		/// <summary>
+		/// Subtracts two numbers
+		/// </summary>
+		/// <param name="x"> first number </param>
+		/// <param name="y"> second number </param>
         public void Sub(string x, string y)
         {
             double intOne = Parse(x);
@@ -63,6 +77,12 @@ namespace Calculator
 
             answer = intOne - intTwo;
         }
+
+        /// <summary>
+        /// Multiplies two numbers
+        /// </summary>
+        /// <param name="x"> first number </param>
+        /// <param name="y"> second number </param>
         public void Multiply(string x, string y)
         {
             double intOne = Parse(x);
@@ -70,6 +90,12 @@ namespace Calculator
 
             answer = intOne * intTwo;
         }
+
+        /// <summary>
+        /// Divides two numbers
+        /// </summary>
+        /// <param name="x"> first number </param>
+        /// <param name="y"> second number </param>
         public void Divide(string x, string y)
         {
             double intOne = Parse(x);
@@ -77,6 +103,12 @@ namespace Calculator
 
             answer = intOne / intTwo;
         }
+
+        /// <summary>
+        /// Finds remainder of two numbers when divided
+        /// </summary>
+        /// <param name="x"> first number </param>
+        /// <param name="y"> second number </param>
         public void Mod(string x, string y)
         {
             double intOne = Parse(x);
@@ -84,6 +116,12 @@ namespace Calculator
 
             answer = intOne % intTwo;
         }
+
+        /// <summary>
+        /// Finds number put to the power of another
+        /// </summary>
+        /// <param name="x"> first number </param>
+        /// <param name="y"> second number </param>
         public void Expontentiate(string x, string y)
         {
             double intOne = Parse(x);
@@ -91,16 +129,31 @@ namespace Calculator
 
             answer = Math.Pow(intOne, intTwo);
         }
+
+		/// <summary>
+		/// Finds square root of number
+		/// </summary>
+		/// <param name="x"> the number </param>
 		public void SquareRoot(string x)
 		{
 			double intOne = Parse(x);
 
 			answer = Math.Sqrt(intOne);
         }
+
+		/// <summary>
+		/// Finds square of number
+		/// </summary>
+		/// <param name="x"> the number </param>
         public void Square(string x)
         {
 			Expontentiate(x, "2");
         }
+
+		/// <summary>
+		/// Finds the factorial of a number
+		/// </summary>
+		/// <param name="x"> the number </param>
         public void Factorial(string x)
 		{
 			int total = 1;
@@ -113,10 +166,10 @@ namespace Calculator
         }
 
 
-    /// <summary>
-    /// Clears the calculator's state
-    /// </summary>
-    public void Clear()
+		/// <summary>
+		/// Clears the calculator's state
+		/// </summary>
+		public void Clear()
 		{
 			Console.WriteLine("State set to 0");
 			answer = 0;
@@ -145,15 +198,29 @@ namespace Calculator
 				Console.WriteLine("Invalid Variable Name");
         }
 
+		/// <summary>
+		/// Parses input safetly and switches out for variables when needed
+		/// </summary>
+		/// <param name="input"> input to parse</param>
+		/// <returns> value that came out of parse </returns>
 		private double Parse(string input)
 		{
 
+			double returnVal = 0;
 			if (StoredVars.ContainsKey(input))
 				return StoredVars[input];
-			return double.Parse(input);
+			bool tmpBool = double.TryParse(input, out returnVal);
+			if (tmpBool != true)
+			{
+				throw new ArgumentException();
+			}
+			else
+				return returnVal;
 		}
 
-
+		/// <summary>
+		/// Displays the variables stored in the calculator
+		/// </summary>
 		public void DisplayVars()
 		{
 			foreach (string key in StoredVars.Keys)
