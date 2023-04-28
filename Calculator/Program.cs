@@ -120,7 +120,7 @@ class Program
                         string stateNum = calc.answer.ToString();
                         Menu.numberFunctionTable[inputs[0]](stateNum, inputs[1]);
                     }
-                    catch (ArgumentException e)
+                    catch (Exception e)
                     {
                         Console.WriteLine("Invalid Input");
                     }

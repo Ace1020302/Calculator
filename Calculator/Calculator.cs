@@ -156,7 +156,7 @@ namespace Calculator
 		/// <param name="x"> the number </param>
         public void Factorial(string x)
 		{
-			double total = 2;
+			double total = 1;
 			double intOne = (double) Parse(x);
 			if (Double.IsInfinity(intOne))
 			{
