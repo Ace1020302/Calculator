@@ -1,4 +1,15 @@
-﻿using System;
+﻿
+///////////////////////////////////////////////////////////////////////////////
+//
+// Author: Phillip Edwards, edwardspb1@etsu.edu
+// Course: CSCI-2210-001 - Data Structures
+// Assignment: Calculator Project 7
+// Description: Class that provides calculator functionality.
+//
+///////////////////////////////////////////////////////////////////////////////
+
+
+using System;
 using System.Text.RegularExpressions;
 
 namespace Calculator
