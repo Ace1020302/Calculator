@@ -156,10 +156,15 @@ namespace Calculator
 		/// <param name="x"> the number </param>
         public void Factorial(string x)
 		{
-			int total = 1;
-			int intOne = (int) Parse(x);
-
-			for (int i = intOne; i > 0; i--)
+			double total = 2;
+			double intOne = (double) Parse(x);
+			if (Double.IsInfinity(intOne))
+			{
+                answer = intOne;
+				return;
+            }
+				
+			for (double i = intOne; i > 0; i--)
 				total *= i;
 
 			answer = total;

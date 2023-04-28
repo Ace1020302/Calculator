@@ -58,7 +58,7 @@ class Program
             Console.WriteLine("-----------------------------------");
             if (inputCount == 1)
             {
-                if (inputs[0].Equals("sq") || inputs[0].Equals("sqrt"))
+                if (inputs[0].Equals("sq") || inputs[0].Equals("sqrt") || inputs[0].Equals("!"))
                 {
                     try
                     {
@@ -96,6 +96,17 @@ class Program
                     try
                     {
                         Menu.numberFunctionTable[inputs[0]](inputs[1]);
+                    }
+                    catch (ArgumentException e)
+                    {
+                        Console.WriteLine("Invalid Input");
+                    }
+                }
+                else if (inputs[1].Equals("!"))
+                {
+                    try
+                    {
+                        Menu.numberFunctionTable[inputs[1]](inputs[0]);
                     }
                     catch (ArgumentException e)
                     {

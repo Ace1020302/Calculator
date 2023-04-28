@@ -5,7 +5,7 @@ namespace Calculator
 	{
         // Establishes dispatch table for menu
         public static Dictionary<string, dynamic> numberFunctionTable = new();
-        public static Dictionary<string, dynamic> noReturnFunctionTable = new();
+        //public static Dictionary<string, dynamic> noReturnFunctionTable = new();
 
         // Handles HCI's
         public Menu()
