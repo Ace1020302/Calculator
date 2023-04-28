@@ -23,7 +23,7 @@ class Program
         Menu.numberFunctionTable["sqrt"] = new Action<string>((number) => calc.SquareRoot(number));
 
         // Dispatch table with string comparisons
-        Menu.numberFunctionTable["="] = new Action<string, string>((first, second) => calc.StoreVar(first, second)); ;
+        Menu.numberFunctionTable["="] = new Action<string, string>((first, second) => calc.StoreVar(first, second));
         Menu.numberFunctionTable["undo"] = new Action(() => calc.Undo());
         Menu.numberFunctionTable["clear"] = new Action(() => calc.Clear());
         Menu.numberFunctionTable["start"] = new Action(() => Menu.displayStart());
@@ -102,6 +102,7 @@ class Program
                         catch (Exception e)
                         {
                             Console.WriteLine("Invalid Input");
+                            Console.WriteLine(e.Message);
                         }
                     }
                     else

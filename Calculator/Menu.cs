@@ -18,6 +18,9 @@ namespace Calculator
 
 		}
 
+        /// <summary>
+        /// Displays the start menu
+        /// </summary>
         public static void displayStart()
         {
             Console.WriteLine("===================================");
@@ -31,6 +34,9 @@ namespace Calculator
             Console.WriteLine("===================================");  
         }
 
+        /// <summary>
+        /// Displays the commands of the Calculator
+        /// </summary>
         public static void displayCommands()
         {
             foreach(string key in descriptionDictionary.Keys)
