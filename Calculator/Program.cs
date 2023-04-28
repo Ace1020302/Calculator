@@ -31,7 +31,29 @@ class Program
         Menu.numberFunctionTable["vars"] = new Action(() => calc.DisplayVars());
         Menu.numberFunctionTable["save"] = new Action(() => FileManager.saveCalcState(calc));
         Menu.numberFunctionTable["load"] = new Action(() => FileManager.loadCalcState(calc));
+        Menu.numberFunctionTable["help"] = new Action(() => Menu.displayCommands());
 
+
+        Menu.descriptionDictionary["+"] = "Adds two numbers.";
+        Menu.descriptionDictionary["-"] = "Subtracts two numbers.";
+        Menu.descriptionDictionary["*"] = "Multiplies two numbers.";
+        Menu.descriptionDictionary["/"] = "Divides two numbers.";
+        Menu.descriptionDictionary["%"] = "Finds the Remainder of a division between two numbers.";
+        Menu.descriptionDictionary["^"] = "Takes one number to the power of another.";
+        Menu.descriptionDictionary["!"] = "Finds Factorial of a number.";
+        Menu.descriptionDictionary["sq"] = "Squares a single number.";
+        Menu.descriptionDictionary["sqrt"] = "Finds Square Root of a single number.";
+
+        // DidescriptionDictionarytring co
+        Menu.descriptionDictionary["="] = "Sets a lower-case string to a value for calculations.";
+        Menu.descriptionDictionary["undo"] = "Undoes the last operation.";
+        Menu.descriptionDictionary["clear"] = "Clears the State (sets it to 0).";
+        Menu.descriptionDictionary["start"] = "Shows the start screen.";
+        Menu.descriptionDictionary["exit"] = "Exits the program.";
+        Menu.descriptionDictionary["vars"] = "Shows the variables in use and their values.";
+        Menu.descriptionDictionary["save"] = "Saves the state of the calculator.";
+        Menu.descriptionDictionary["load"] = "Loads the previousily saved calculator state.";
+        Menu.descriptionDictionary["help"] = "Displays the commands and their descriptions.";
         // displays the start text
         Menu.displayStart();
 

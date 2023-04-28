@@ -1,11 +1,16 @@
 ﻿using System;
+using System.ComponentModel;
+
 namespace Calculator
 {
 	public class Menu
 	{
         // Establishes dispatch table for menu
         public static Dictionary<string, dynamic> numberFunctionTable = new();
-        //public static Dictionary<string, dynamic> noReturnFunctionTable = new();
+
+        // Could fold into a single dictionary with the other and make a class to hold an action and a description...
+        public static Dictionary<string, string> descriptionDictionary = new();
+
 
         // Handles HCI's
         public Menu()
@@ -23,14 +28,13 @@ namespace Calculator
             Console.WriteLine("For other commands, type 'help'");
             Console.WriteLine("To see this again, type 'start'");
             Console.WriteLine("To exit, type 'exit'");
-            Console.WriteLine("===================================");
-            
+            Console.WriteLine("===================================");  
         }
 
         public static void displayCommands()
         {
-            //foreach(string key in noReturnFunctionTable.Keys)
-                //Console.WriteLine($"{}: {}");
+            foreach(string key in descriptionDictionary.Keys)
+                Console.WriteLine($"{key}: {descriptionDictionary[key]}");
         }
     }
 }
