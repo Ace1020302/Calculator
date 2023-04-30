@@ -92,7 +92,11 @@ namespace Calculator
             answer = intOne / intTwo;
         }
 
-		public void SetState(string x)
+        /// <summary>
+        /// Sets the state
+        /// </summary>
+        /// <param name="x"> Number to set state to </param>
+        public void SetState(string x)
 		{
 			answer = Parse(x);
 		}
