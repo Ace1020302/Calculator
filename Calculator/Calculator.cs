@@ -92,7 +92,7 @@ namespace Calculator
             answer = intOne / intTwo;
         }
 
-		public void Set(string x)
+		public void SetState(string x)
 		{
 			answer = Parse(x);
 		}

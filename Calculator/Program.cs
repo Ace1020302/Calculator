@@ -113,9 +113,9 @@ class Program
                         Console.WriteLine(e.Message);
                     }
                 }
-                else if (calc.StoredVars.ContainsKey(inputs[0]))
+                else if (calc.StoredVars.ContainsKey(inputs[0]) || double.TryParse(inputs[0], out var result))
                 {
-                    calc.Set(inputs[0]);
+                    calc.SetState(inputs[0]);
                 }
                 else
                 {
