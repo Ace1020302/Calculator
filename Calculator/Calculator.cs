@@ -9,6 +9,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 
+using Microsoft.Win32.SafeHandles;
 using System;
 using System.Text.RegularExpressions;
 
@@ -28,6 +29,7 @@ namespace Calculator
 		public double answer { get => answers.Count() == 0 ? 0 : answers.Peek(); set { answers.Push(value); } }
 
 		public Dictionary<string, double> StoredVars = new();
+
 
 		/// <summary>
 		/// Adds two numbers together
@@ -89,6 +91,11 @@ namespace Calculator
 
             answer = intOne / intTwo;
         }
+
+		public void Set(string x)
+		{
+			answer = Parse(x);
+		}
 
         /// <summary>
         /// Finds remainder of two numbers when divided

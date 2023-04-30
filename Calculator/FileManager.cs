@@ -24,8 +24,8 @@ namespace Calculator
 		/// <param name="calc"> Calculator object to save the state of </param>
         public static void saveCalcState(Calculator calc)
 		{
-			
-			var serializer = new SerializerBuilder().Build();
+            // repurposed code from https://stackoverflow.com/questions/73786590/serializing-a-c-sharp-object-in-yaml for yaml translation
+            var serializer = new SerializerBuilder().Build();
 			var yaml = serializer.Serialize(calc.answer);
             yaml += serializer.Serialize(calc.StoredVars);
 

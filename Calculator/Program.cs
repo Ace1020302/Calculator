@@ -101,26 +101,27 @@ class Program
                         Console.WriteLine("Invalid Input");
                     }
                 }
-                else
+                else if (Menu.numberFunctionTable.ContainsKey(inputs[0]))
                 {
-                    if (Menu.numberFunctionTable.ContainsKey(inputs[0]))
+                    try
                     {
-                        try
-                        {
-                            Menu.numberFunctionTable[inputs[0]]();
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Invalid Input");
-                            Console.WriteLine(e.Message);
-                        }
+                        Menu.numberFunctionTable[inputs[0]]();
                     }
-                    else
+                    catch (Exception e)
                     {
-                        Console.WriteLine("Not a recognized command");
+                        Console.WriteLine("Invalid Input");
+                        Console.WriteLine(e.Message);
                     }
                 }
-            }
+                else if (calc.StoredVars.ContainsKey(inputs[0]))
+                {
+                    calc.Set(inputs[0]);
+                }
+                else
+                {
+                    Console.WriteLine("Not a recognized command");
+                }
+        }
 
             if (inputCount == 2)
             {

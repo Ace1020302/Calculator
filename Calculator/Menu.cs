@@ -38,8 +38,14 @@ namespace Calculator
             Console.WriteLine();
             Console.WriteLine("Please remember to space out input!");
             Console.WriteLine("Examples: 1 + 3, 4 - 3, 10 % 3");
+            Console.WriteLine();
+            Console.WriteLine("Also, if you have saved variables" +
+                "\n  you can set the state to the variables" + 
+                "\n  by just typing the variable name");
+            Console.WriteLine();
             Console.WriteLine("For other commands, type 'help'");
             Console.WriteLine("To see this again, type 'start'");
+            Console.WriteLine();
             Console.WriteLine("To exit, type 'exit'");
             Console.WriteLine("===================================");  
         }
